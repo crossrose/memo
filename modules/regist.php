@@ -72,7 +72,7 @@
     if ( $memo_type == "1" ) {
        if ( strlen($memo_passwd) < 3 || strlen($memo_passwd) > 13 ) {
             $error_message = " 비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요 ";
-          }else if ( $wherefrom != "1" && $wherefrom != "2" ) { //wherefrom  조건 추가 
+          }else if ( $wherefrom != "1" && $wherefrom != "2" ) { //wherefrom  조건 추가
             $error_message = "비정상적인 접근입니다.";
          }else{
           $ntx = new Ntxclass();
@@ -120,4 +120,5 @@
     echo '<script type="text/javascript">alert("'.$error_message.'");top.location.href= "../front/main.php";</script>';
     exit;
   }
+  
 ?>
