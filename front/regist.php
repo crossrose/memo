@@ -93,6 +93,7 @@
 		if ($("#memo_passwd").val() == "") {
 			alert('비밀번호를 넣어주세요');
 			return false;
+
 		}else if ($("#memo_passwd").val().length < 4 || $("#memo_passwd").val().length > 13 ){
 			alert('비밀번호를 4자리 이상 넣어주세요');
 			$("#memo_passwd").val('');
@@ -142,11 +143,11 @@
 				<td><label>연결 URL</label></td>
 				<td><input type="text" id="memo_link_url" name="memo_link_url" value="<?=$memo_link_url?>"/></td>
 			</tr>
-<?php if ($create_date !="") { ?>
+<? 	if ( $create_date !="" ) { ?>
 			<tr>
 				<td><label>작성일자</label></td><td><?=$create_date?></td>
 			</tr>
-<? } ?>
+<?	} ?>
 			<tr>
 				<td><input type="submit" value="<?=$button_value?>" /></td>
 				<td><input type="button" value="취소" onclick="cancel(<?=$wherefrom?>,<?=$idx?>);" /></td>
