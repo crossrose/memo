@@ -120,5 +120,4 @@
     echo '<script type="text/javascript">alert("'.$error_message.'");top.location.href= "../front/main.php";</script>';
     exit;
   }
-  
 ?>
