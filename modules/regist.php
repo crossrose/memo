@@ -70,7 +70,7 @@
 
   if ( $chk_value ) {
     if ( $memo_type == "1" ) {
-       if ( strlen($memo_passwd) < 3 || strlen($memo_passwd) > 13 ) {
+       if ( strlen($memo_passwd) < 4 || strlen($memo_passwd) > 13 ) {
             $error_message = " 비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요 ";
           }else if ( $wherefrom != "1" && $wherefrom != "2" ) { //wherefrom  조건 추가
             $error_message = "비정상적인 접근입니다.";
@@ -101,7 +101,7 @@
 
   // 수정모드든 등록모드든 에러가 발생하면, 전 단계로 돌아가면 됨. main으로 돌아가는 케이스는 인자 값이 정상적이지 않을 경우에만 돌아가면 됨
   if ($error_message) {
-      if ( $wherefrom != "1" || $wherefrom != "2" ) {  // 목록에서 들어와서 문제가 생기면 , 수정하던 상황으로 돌아간다.
+      if ( $wherefrom != "1" && $wherefrom != "2" ) {  // 목록에서 들어와서 문제가 생기면 , 수정하던 상황으로 돌아간다.
         echo '<script type="text/javascript">alert("'.$error_message.'");top.location.href= "../front/main.php";</script>';
       }else {
         echo '<script type="text/javascript">alert("'.$error_message.'");history.back();</script>';

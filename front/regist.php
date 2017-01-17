@@ -105,7 +105,7 @@
      if ($("#memo_passwd").val() == "") {
        alert('비밀번호를 넣어주세요');
        return false;
-     }else if ($("#memo_passwd").val().length < 3 || $("#memo_passwd").val().length > 13 ){
+     }else if ($("#memo_passwd").val().length < 4 || $("#memo_passwd").val().length > 13 ){
        alert('비밀번호를 4자리 이상 넣어주세요');
        $("#memo_passwd").val('');
        return false;

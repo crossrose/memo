@@ -33,7 +33,7 @@
 
 
   if ( $chk_value ) {
-    if ( strlen($passwd) < 3 || strlen($passwd) > 13 ) {
+    if ( strlen($passwd) < 4 || strlen($passwd) > 13 ) {
       $error_message = " 비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요 ";
     } else if ( $whereform != 1 && $wherefrom != 2 ) {
       $error_message = " 비정상적인 접근 입니다. ";

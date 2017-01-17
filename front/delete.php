@@ -42,7 +42,7 @@
      if ($("#passwd").val() == "") {
        alert('비밀번호를 넣어주세요');
        return false;
-     }else if ($("#passwd").val().length < 3 || $("#passwd").val().length > 13 ) {
+     }else if ($("#passwd").val().length < 4 || $("#passwd").val().length > 13 ) {
        alert('비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요');
        $("#passwd").val("");
        return false;
