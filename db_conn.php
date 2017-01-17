@@ -68,11 +68,11 @@ class CMySQLDB
 		return $this->result;
 	}
 
-  function GetLastIdx(){
-     return mysql_insert_id($this->connection);
-  }
+	function GetLastIdx(){
+		return mysql_insert_id($this->connection);
+	}
 
-  //http://www.w3schools.com/php/func_mysqli_fetch_row.asp
+	//http://www.w3schools.com/php/func_mysqli_fetch_row.asp
 	// c# 의 dataSet, dataMap 처럼 전체 Row를 리턴 . 이렇게 되면, SQL 서버에 추가 쿼리 없이
 	// dataMap 내에서의 연산이 가능 할 수 있을 듯 함
 	// array_search , in_array 등을 통해서 sql 없이 search 등이 가능 할 듯 함
@@ -80,17 +80,10 @@ class CMySQLDB
 	function GetFetchDataMap() {
 		$this->data = array();
 
-	  while( $result_rows = mysqli_fetch_array($this->result,MYSQL_BOTH) ) {
-				array_push($this->data,$result_rows);
+		while( $result_rows = mysqli_fetch_array($this->result,MYSQL_BOTH) ) {
+			array_push($this->data,$result_rows);
 		}
-	  return $this->data;
-		//
-		// $return_data = array();
-	  // //while( $result_rows = mysqli_fetch_array($this->result,MYSQL_BOTH) ) {
-		// while( $result_rows = mysqli_fetch_assoc($result) ) {
-		// 	array_push($return_data,$result_rows);
-		// }
-	  // return $return_data;
+		return $this->data;
 	}
 }
 ?>
