@@ -21,16 +21,18 @@
 	$error_message	= "";
 	$sucess_message = "";
 
+	//break 문 없이 처리 하게 됨
 	foreach ( $array_posts as $arr ) {
 
 		${$arr} = check_value_skip($parse[$arr],$arr,$array_skip_posts);
 
 		if ( ${$arr} == "false" )  {
 			$chk_value = FALSE; // PHP 에서는 swich case break 문을 지양한다
-			if ($arr == "memo_title") $error_message = "메모 제목을 넣어주세요 ";
-			elseif ($arr == "memo_text") $error_message = "메모 내용을 넣어주세요";
-			elseif ($arr == "memo_name") $error_message = "등록자 이름을 넣어주세요";
-			elseif ($arr == "memo_passwd") $error_message = "비밀번호를 넣어주세요";
+
+			if ($arr == "memo_title") 		$error_message = "메모 제목을 넣어주세요 ";
+			elseif ($arr == "memo_text")	$error_message = "메모 내용을 넣어주세요";
+			elseif ($arr == "memo_name")	$error_message = "등록자 이름을 넣어주세요";
+			elseif ($arr == "memo_passwd")	$error_message = "비밀번호를 넣어주세요";
 			elseif ($arr == "memo_link_url") $error_message = "Link URL을 넣어주세요";
 			else $error_message = "비정상적인 접근입니다.1 ";
 			// http://php.net/manual/kr/control-structures.break.php foreach 에 대한 break 문 처리
