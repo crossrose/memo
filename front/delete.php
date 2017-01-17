@@ -11,6 +11,7 @@
 <body>
 <?php
 	$error_message = "";
+
 	if ( isset($_GET["idx"]) && $_GET["idx"] !='' && is_numeric($_GET["idx"]) ) {
 		$idx = trim($_GET["idx"]);
 	} else {
