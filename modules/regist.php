@@ -56,35 +56,37 @@
       elseif ($arr == "memo_name") $error_message = "등록자 이름을 넣어주세요";
       elseif ($arr == "memo_passwd") $error_message = "비밀번호를 넣어주세요";
       elseif ($arr == "memo_link_url") $error_message = "Link URL을 넣어주세요";
-      else $error_message = "비정상적인 접근입니다. ";
+      else $error_message = "비정상적인 접근입니다.1 ";
       // http://php.net/manual/kr/control-structures.break.php foreach 에 대한 break 문 처리
       break; // 어떤 상황이라도 error 가 발생하면 그 즉시 foreach 를 벗어 나야 함 따라서 break 문은 필수임
     } else {
       $chk_value = TRUE;
     }
   }
+
+
   // echo "chk value = ".$chk_value ;
   // exit;
 
   if ( $chk_value ) {
-    if ( $type == "1" ) {
+    if ( $memo_type == "1" ) {
        if ( strlen($memo_passwd) < 3 || strlen($memo_passwd) > 13 ) {
             $error_message = " 비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요 ";
-        } else {
+          }else if ( $wherefrom != "1" && $wherefrom != "2" ) { //wherefrom  조건 추가 
+            $error_message = "비정상적인 접근입니다.";
+         }else{
           $ntx = new Ntxclass();
           $org_passwd = $ntx->get_password($idx);
           // 비밀번호 확인
           if ( passwd_check($memo_passwd,$org_passwd) ) {
             $tx = new Txclass(); // password 는 업데이트 하지 않음
             $result = $tx->set_memo_update($idx,$memo_name,$memo_title,$memo_text,$memo_link_url);
-
             if ( $result ) $sucess_message = " 수정 되었습니다. ";
             else $error_message = " 수정 실패 하였습니다. ";
-
           } else {
             $error_message = " 비밀번호가 틀렸습니다. ";
           }
-        }
+      }
     } else {
       $tx = new Txclass();
       $result = $tx->set_memo_insert($memo_name,$memo_title,passwd_encrypt($memo_passwd),$memo_text,$memo_link_url);

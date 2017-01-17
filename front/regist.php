@@ -29,11 +29,11 @@
 <?php
   // 1. 인자값 check
   // 2.
-  if  ( isset($_GET["type"]) && $_GET["type"] !='' && is_numeric($_GET["type"]) ) {
+  if  ( isset($_GET["memo_type"]) && $_GET["memo_type"] !='' && is_numeric($_GET["memo_type"]) ) {
     //
 
     if ( isset($_GET["wherefrom"]) && $_GET["wherefrom"] !='' && is_numeric($_GET["wherefrom"]) ) {
-       if ( in_array($_GET["wherefrom"],array(1,2,3) ) ) {
+       if ( in_array($_GET["wherefrom"],array(1,2) ) ) {
          $wherefrom = trim($_GET["wherefrom"]);
        }else{
          $error_message = " 잘못된 접근입니다 " ;

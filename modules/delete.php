@@ -19,11 +19,11 @@
   $error_message = "";
   $sucess_message = "";
 
-   foreach ( $array_posts as $arr ) {
+  foreach ( $array_posts as $arr ) {
     ${$arr} = check_value($parse[$arr]);
     if ( ${$arr} == "false" ) {
         $chk_value = FALSE;
-        $error_message = " 비정상적인 접근입니다."; // IDX, PASSWORD , WHEREFROM 존재 확인
+        $error_message = " 비정상적인 접근입니다. "; // IDX, PASSWORD , WHEREFROM 존재 확인
         // http://php.net/manual/kr/control-structures.break.php foreach 에 대한 break 문 처리
         break;
     } else {
@@ -33,8 +33,10 @@
 
 
   if ( $chk_value ) {
-    if ( strlen($passwd) < 3 || strlen($passwd) > 13) {
+    if ( strlen($passwd) < 3 || strlen($passwd) > 13 ) {
       $error_message = " 비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요 ";
+    } else if ( $whereform != 1 && $wherefrom != 2 ) {
+      $error_message = " 비정상적인 접근 입니다. ";
     } else {
       $ntx = new Ntxclass();
       $org_passwd = $ntx->get_password($idx); // 비밀번호 처리

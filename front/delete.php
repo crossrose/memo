@@ -20,7 +20,7 @@
 
   if ( isset($_GET["wherefrom"]) && $_GET["wherefrom"] !='' && is_numeric($_GET["wherefrom"]) ) {
       // wherefrom 인자 값 확인
-      if (in_array($_GET["wherefrom"],array(1,2,3))) {
+      if (in_array($_GET["wherefrom"],array(1,2))) {
         $wherefrom = trim($_GET["wherefrom"]);
       } else {
         $error_message = " 잘못된 접근입니다. ";
