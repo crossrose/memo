@@ -18,6 +18,7 @@ class Tx {
 	}
 
 	public function set_memo_insert($in_name,$in_title,$in_password,$in_memo,$in_memo_link_url) {
+
 		$db = new CMySQLDB();
 
 		$name		= $this->check_db_value($in_name,$db);
