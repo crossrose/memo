@@ -1,7 +1,7 @@
 <?php
 	require (dirname(__FILE__) . '/../db_conn.php');
 	require (dirname(__FILE__) . '/../common/_common.php');
-	require (dirname(__FILE__) . '/../modules/NtxClass.php');
+	require (dirname(__FILE__) . '/../modules/Ntx.php');
 ?>
 <!DOCTYPE html>
 <html lang="ko">

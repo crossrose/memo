@@ -2,8 +2,8 @@
 	require (dirname(__FILE__). '/../db_conn.php');
 	require (dirname(__FILE__). '/../common/_common.php');
 	require (dirname(__FILE__). '/../common/function.php');
-	require (dirname(__FILE__). '/../modules/Ntxclass.php');
-	require (dirname(__FILE__). '/../modules/Txclass.php');
+	require (dirname(__FILE__). '/../modules/Ntx.php');
+	require (dirname(__FILE__). '/../modules/Tx.php');
 
 	header("Content-Type: text/html;charset=UTF-8"); // 한글 처리용
 

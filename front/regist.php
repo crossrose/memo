@@ -1,7 +1,7 @@
 <?php
 	require (dirname(__FILE__) . '/../db_conn.php');
 	require (dirname(__FILE__) . '/../common/_common.php');
-	require (dirname(__FILE__) . '/../modules/Ntxclass.php');
+	require (dirname(__FILE__) . '/../modules/Ntx.php');
 
 	$error_message = "";
 	$memo_type = "0";
