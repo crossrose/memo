@@ -4,22 +4,28 @@
 	require (dirname(__FILE__). '/../modules/Ntx.php');
 	require (dirname(__FILE__). '/../modules/Tx.php');
 
-	function error_message_script($message, $return_type =0) {
+	function message_script($message, $return_type =0, $idx=0) {
 		// 0 : history back
 		// 1 : top.location.href = "main";
+		// 2 : top.location.href = "regist";
 		// 추가 인자값에 따라서 스크립트 추가 예정
 
 		if ( $return_type == 0 ) {
-			echo '<script type="text/javascript">
-					alert("'.$message.'");
-					history.back();
-				</script>';
+			$location = "history.back();";
 		}else if ( $return_type == 1 ){
-			echo '<script type="text/javascript">
-					alert("'.$message.'");
-					top.location.href= "../front/main.php"
-				</script>';
+			$location = 'top.location.href= "../front/regist.php";';
+		}else if ( $return_type == 2 && $idx ){
+			$location = 'top.location.href= "../front/read.php?idx='.$idx.'";';
+		}else if ( $return_type == 3 ){
+			$location = 'top.location.href= "../front/main.php";';
+		}else {
+			$location = "";
 		}
+
+		echo '<script type="text/javascript">
+				alert("'.$message.'");
+				'.$location.'
+				</script>';
 
 	}
 
@@ -119,42 +125,42 @@
 
 	 	if ($memo_title == "")	{
 			$error_message = "메모 제목을 넣어주세요 ";
-			error_message_script($error_message);
+			message_script($error_message);
 			exit;
 		}
 	//
 		if ($memo_text == "")	{
 			$error_message = "메모 내용을 넣어주세요";
-			error_message_script($error_message);
+			message_script($error_message);
 			exit;
 		}
 	//
 	 	if ($memo_name == "")	{
 			$error_message = "등록자 이름을 넣어주세요";
-			error_message_script($error_message);
+			message_script($error_message);
 			exit;
 		}
 	//
 	 	if ($memo_passwd == "")	{
 			$error_message = "비밀번호를 넣어주세요";
-			error_message_script($error_message);
+			message_script($error_message);
 			exit;
 		}
 
 		if ($memo_link_url == "") {
 			$error_message = "Link URL을 넣어주세요";
-			error_message_script($error_message);
+			message_script($error_message);
 			exit;
 		}
 	} else {
 		if ( $memo_type == "1" ) {
 			if ( strlen($memo_passwd) < 4 || strlen($memo_passwd) > 13 ) {
 				$error_message = " 비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요 ";
-				error_message_script($error_message);
+				message_script($error_message);
 				exit;
 			} else if ( $wherefrom != "1" && $wherefrom != "2" ) { //wherefrom  조건 추가
 				$error_message = " 비정상적인 접근입니다. ";
-				error_message_script($error_message);
+				message_script($error_message);
 				exit;
 			} else {
 				$ntx = new Ntx();
@@ -172,7 +178,7 @@
 		} else {
 			if ( strlen($memo_passwd) < 4 || strlen($memo_passwd) > 13 ) {
 				$error_message = " 비밀번호를 4자리 이상 , 12 자리 이하 넣어주세요 ";
-				error_message_script($error_message);
+				message_script($error_message);
 				exit;
 			} else {
 				$tx = new Tx();
@@ -185,27 +191,24 @@
 
 	// 수정모드든 등록모드든 에러가 발생하면, 전 단계로 돌아가면 됨. main으로 돌아가는 케이스는 인자 값이 정상적이지 않을 경우에만 돌아가면 됨
 	if ($error_message) {
-		if ( $wherefrom != "1" && $wherefrom != "2" ) {  // 목록에서 들어와서 문제가 생기면 , 수정하던 상황으로 돌아간다.
-			error_message_script($error_message,1);
+		if ( $wherefrom != "1" && $wherefrom != "2" ) { //wherefrom  이 1:목록 도 , 2:읽기 도 아닌 경우
+			message_script($error_message,3); // 특이사항으로 보고 main으로 돌아간다.
 			exit;
 		} else {
-			error_message_script($error_message);
+			message_script($error_message); // 에러를 표시 하고, 전단계로 돌아간다.
 			exit;
 		}
 	} else if ($sucess_message) {
-		if ($wherefrom == "2") { // 읽기에서 들어오면
-			echo '<script type="text/javascript">alert("'.$sucess_message.'");top.location.href= "../front/read.php?idx='.$idx.'";</script>';
+		if ($wherefrom == "2") { // 읽기에서 들어와서 수정이 성공하면, 기존의 읽기 상태로 돌아간다.
+			message_script($sucess_message,2,$idx);
 			exit;
-		} else {
-			echo '<script type="text/javascript">alert("'.$sucess_message.'");top.location.href= "../front/main.php";</script>';
+		} else { // 수정 모드에서 목록에서 들어오는 경우 , 혹은 wherefrom 이 없는 등록 모드일 경우에는 등록, 수정 후에는 목록으로 돌아간다.
+			message_script($sucess_message,3);
 			exit;
 		}
 	} else { // 그외의 문제가 발생하거나, 특이 사항 발생시에는 무조건 main으로 돌아간다. - 보험
 		$error_message = "정의하지 않은 에러가 발생했습니다. ";
-		error_message_script($error_message,1);
+		message_script($error_message,3);
 		exit;
 	}
-
-
-
 ?>
