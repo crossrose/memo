@@ -38,12 +38,12 @@
 		} else if ( $whereform != 1 && $wherefrom != 2 ) {
 			$error_message = " 비정상적인 접근 입니다. ";
 		} else {
-			$ntx = new Ntxclass();
+			$ntx = new Ntx();
 			$org_passwd = $ntx->get_password($idx); // 비밀번호 처리
 
 			if ( passwd_check($passwd,$org_passwd) ) { // 비밀번호 확인
 
-				$tx = new Txclass();
+				$tx = new Tx();
 				$result = $tx->set_memo_delete($idx);
 
 				if ($result) $sucess_message = "삭제 되었습니다.";

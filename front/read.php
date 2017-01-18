@@ -21,7 +21,7 @@
 	if ( isset($_GET["idx"]) && $_GET["idx"] !='' && is_numeric($_GET["idx"]) ) {
 
 		$idx = trim($_GET["idx"]);
-		$ntx = new ntxClass();
+		$ntx = new Ntx();
 		$memo_list = $ntx->get_memos($idx);
 
 		if ( count($memo_list) > 0 ) {

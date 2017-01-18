@@ -46,7 +46,7 @@
 
 				$idx = trim($_GET["idx"]);
 				$db  = new CMySQLDB();
-				$ntx = new NtxClass();
+				$ntx = new Ntx();
 				$memo_list = $ntx->get_memos($idx);
 
 				if ( count($memo_list) > 0 ) {
@@ -73,38 +73,38 @@
 	}
 ?>
 	<script type="text/javascript">
-	function chk_value()
-	{
-		if ($("#memo_title").val() == "") {
-			alert('제목을 넣어주세요');
-			return false;
-		}
-
-		if ($("#memo_text").val() == "") {
-			alert('내용을 넣어주세요');
-			return false;
-		}
-
-		if ($("#memo_name").val() == "") {
-			alert('이름을 넣어주세요');
-			return false;
-		}
-
-		if ($("#memo_passwd").val() == "") {
-			alert('비밀번호를 넣어주세요');
-			return false;
-
-		}else if ($("#memo_passwd").val().length < 4 || $("#memo_passwd").val().length > 13 ){
-			alert('비밀번호를 4자리 이상 넣어주세요');
-			$("#memo_passwd").val('');
-			return false;
-		}
-
-		if ($("#memo_link_url").val() == "") {
-			alert('URL을 넣어주세요');
-			return false;
-		}
-	}
+	// function chk_value()
+	// {
+	// 	if ($("#memo_title").val() == "") {
+	// 		alert('제목을 넣어주세요');
+	// 		return false;
+	// 	}
+	//
+	// 	if ($("#memo_text").val() == "") {
+	// 		alert('내용을 넣어주세요');
+	// 		return false;
+	// 	}
+	//
+	// 	if ($("#memo_name").val() == "") {
+	// 		alert('이름을 넣어주세요');
+	// 		return false;
+	// 	}
+	//
+	// 	if ($("#memo_passwd").val() == "") {
+	// 		alert('비밀번호를 넣어주세요');
+	// 		return false;
+	//
+	// 	}else if ($("#memo_passwd").val().length < 4 || $("#memo_passwd").val().length > 13 ){
+	// 		alert('비밀번호를 4자리 이상 넣어주세요');
+	// 		$("#memo_passwd").val('');
+	// 		return false;
+	// 	}
+	//
+	// 	if ($("#memo_link_url").val() == "") {
+	// 		alert('URL을 넣어주세요');
+	// 		return false;
+	// 	}
+	// }
 
 	function cancel(wherefrom,idx)
 	{

@@ -26,7 +26,7 @@
 		</thead>
 		<tbody>
   <?php
-	$ntx = new NtxClass();
+	$ntx = new Ntx();
 	$memo_list = $ntx->get_list();
 	$memo_list_idx = count($memo_list);
 
