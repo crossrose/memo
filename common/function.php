@@ -42,7 +42,7 @@
 	}
 
 
-	
+
 	// 000 : IDX 값이 없습니다. MEMO가 존재하지 않거나 , MEMO가 삭제 되었습니다.
 	// 001 : IDX 파라미터가 누락되었습니다. 비정상적인 접근입니다.
 	// 002 : IDX 값의 범위를 넘었습니다. 비정상적인 접근입니다.
@@ -63,10 +63,13 @@
 	//   };
 
 	// // common에 등록한 error code를 발생하기 위한 코드
-	//  function get_error_code($error_code){
-	//    if (in_array($error_code,$error_code_list))  {
-	//      $return_value = $error_code_list['$error_code'];
-	//    } // list 처럼 체크하고 해당 값을 뽑아내는 방식)
+	// list 처럼 체크하고 해당 값을 뽑아내는 방식)
+	//	function get_error_code($error_code){
+	//		if (in_array($error_code,$error_code_list))  {
+	//			$return_value = $error_code_list['$error_code'];
+	//		} else {
+	//			$return_value = "undefined error";
+	//		}
 	//
 	//    return $return_value;
 	//  }
