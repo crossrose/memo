@@ -23,17 +23,21 @@
 		exit;
 	}else if ( $_SERVER["HTTP_REFERER"] != "") {
 		$referer = explode('?',explode('http://',$_SERVER["HTTP_REFERER"])[1])[0];
-		echo $referer;
-
-		$pos      = strripos($referer,$domain_url);
-		//echo $pos;
+		//$pos     = strripos($referer,$domain_url);
+		$pos     = strripos($referer,"memo");
 
 		if ($pos === false) {
-    		echo "Sorry, we did not find (".$domain_url.") in (".$referer.")";
-		} else {
-    		echo "Congratulations!\n";
-    		echo "We found the last ($domain_url) in ($referer) at position ($pos)";
+			toplocation_script("main.php");
+			exit;
+		} else if ($pos != 0) {
+			echo $pos;
+			exit;
+			// $pos 는 0 이어야 함
+
+		}else {
+			echo $pos;
 		}
+
 
 		exit;
 
