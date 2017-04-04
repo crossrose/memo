@@ -25,7 +25,7 @@
 		$referer = explode('?',explode('http://',$_SERVER["HTTP_REFERER"])[1])[0];
 		echo $referer;
 
-		$pos      = strripos($domain_url,$referer);
+		$pos      = strripos($referer,$domain_url);
 		//echo $pos;
 
 		if ($pos === false) {
