@@ -22,9 +22,9 @@
 		toplocation_script("main.php");
 		exit;
 	}else if ( $_SERVER["HTTP_REFERER"] != "") {
-		$referer = explode($_SERVER["HTTP_REFERER"],"http://")[0];
+		$referer = explode($_SERVER["HTTP_REFERER"],"http://")[1];
 		echo $referer;
-		
+
 	}
 
 	$array_posts = array("idx","passwd","wherefrom");
