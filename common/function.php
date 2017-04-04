@@ -91,7 +91,12 @@
 
 	// Message alert
 	function messageBox_script($value,$top_page = "") {
-		$messageBox = "<script type='text/javascript'>alert('".$value."');";
+
+		$messageBox = "<script type='text/javascript'>";
+		if ($value != "" ) {
+		 $messageBox .="alert('".$value."');";
+		}
+
 		if ($top_page != "") {
 			$messageBox .="top.location.href='".$top_page."';";
 		}
