@@ -22,8 +22,18 @@
 		toplocation_script("main.php");
 		exit;
 	}else if ( $_SERVER["HTTP_REFERER"] != "") {
-		$referer = explode('?',explode('http://',$_SERVER["HTTP_REFERER"])[1]);
-		print_r($referer);
+		$referer = explode('?',explode('http://',$_SERVER["HTTP_REFERER"])[1])[0];
+		echo $referer;
+
+		$pos      = strripos($referer, $domain_url);
+		//echo $pos;
+
+		if ($pos === false) {
+    		echo "Sorry, we did not find (".$needle.") in (".$haystack.")";
+		} else {
+    		echo "Congratulations!\n";
+    		echo "We found the last ($needle) in ($haystack) at position ($pos)";
+		}
 		exit;
 
 	}
