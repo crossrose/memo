@@ -62,8 +62,7 @@
 	function cancel()
 	{
 		//top.location.href =
-		//history.back();
-
+		history.back();
 		return false;
 		// 기능 적으로는 스토리 보드 대로 (읽기모드 -> 삭제 -> 취소 ->읽기모드 , 목록-> 삭제-> 취소 -> 목록 ) 으로 되지만,
 		// 올바른 방법인지에 대해서는 고민이 있음.
