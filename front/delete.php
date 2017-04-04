@@ -11,7 +11,11 @@
 <body>
 <?php
 	$error_message = "";
-
+	// referer 가 없는 경우 리턴 시켜야 함
+	if (!isset($_SERVER["HTTP_REFERER"))  {
+		messageBox_script("","main.php");
+		exit;
+	}
 	if ( isset($_GET["idx"]) && $_GET["idx"] !='' && is_numeric($_GET["idx"]) ) {
 		$idx = trim($_GET["idx"]);
 	} else {
