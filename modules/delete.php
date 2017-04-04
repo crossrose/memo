@@ -29,11 +29,12 @@
 		//echo $pos;
 
 		if ($pos === false) {
-    		echo "Sorry, we did not find (".$needle.") in (".$haystack.")";
+    		echo "Sorry, we did not find (".$referer.") in (".$domain_url.")";
 		} else {
     		echo "Congratulations!\n";
-    		echo "We found the last ($needle) in ($haystack) at position ($pos)";
+    		echo "We found the last ($referer) in ($domain_url) at position ($pos)";
 		}
+		
 		exit;
 
 	}
