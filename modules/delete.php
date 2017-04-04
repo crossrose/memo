@@ -22,8 +22,9 @@
 		toplocation_script("main.php");
 		exit;
 	}else if ( $_SERVER["HTTP_REFERER"] != "") {
-		$referer = explode($_SERVER["HTTP_REFERER"],"http://")[1];
-		echo $referer;
+		$referer = explode($_SERVER["HTTP_REFERER"],"http://");
+		print_r($referer);
+		exit;
 
 	}
 
