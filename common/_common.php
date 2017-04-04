@@ -7,8 +7,11 @@
 	// memo type          0        1      2
 	//$memo_status = array{"NEW","EDIT","READ"};
 
-	//ERROR_MESSAES 가 많아지면, 그룹화 해서 동일한 MESSAGE가 발생 하도록 관리함
-	// EX)
-	// GROUP CODE : 0 : IDX  , 1 : TYPE  , 2: VALUE_CHECK
-	//
+	$domain 			= "redwolf.site";
+	$domain_url 		= "www".$domain;
+	$domain_http_url 	= "http://".$domain_url;
+	$domain_https_url 	= "https://".$domain_url;
+
+	$main_url = @"/memo/front/main.php";
+
 ?>
