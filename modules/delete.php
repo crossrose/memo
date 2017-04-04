@@ -22,7 +22,7 @@
 		toplocation_script("main.php");
 		exit;
 	}else if ( $_SERVER["HTTP_REFERER"] != "") {
-		$referer = explode('http://',$_SERVER["HTTP_REFERER"]);
+		$referer = explode('/',explode('http://',$_SERVER["HTTP_REFERER"])[1]);
 		print_r($referer);
 		exit;
 
