@@ -25,16 +25,16 @@
 		$referer = explode('?',explode('http://',$_SERVER["HTTP_REFERER"])[1])[0];
 		echo $referer;
 
-		$pos      = strripos($referer, $domain_url);
+		$pos      = strripos($domain_url,$referer);
 		//echo $pos;
 
 		if ($pos === false) {
-    		echo "Sorry, we did not find (".$referer.") in (".$domain_url.")";
+    		echo "Sorry, we did not find (".$domain_url.") in (".$referer.")";
 		} else {
     		echo "Congratulations!\n";
-    		echo "We found the last ($referer) in ($domain_url) at position ($pos)";
+    		echo "We found the last ($domain_url) in ($referer) at position ($pos)";
 		}
-		
+
 		exit;
 
 	}
