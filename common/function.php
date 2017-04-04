@@ -103,4 +103,14 @@
 		$messageBox .="</script>";
 		echo $messageBox;
 	}
+
+	function toplocation_script($top_page) {
+
+		$messageBox = "<script type='text/javascript'>";
+		if ($top_page != "") {
+			$toplocation .="top.location.href='".$top_page."';";
+		}
+		$toplocation .="</script>";
+		echo $toplocation;
+	}
 ?>
