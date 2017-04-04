@@ -9,10 +9,22 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "GET") {
 		$error_message = "비정상적인 접근입니다.";
-		header('Location: http://www.bloodredwolves.com/memo/front/main.php');
+		header('Location: http://www.redwolf.site/memo/front/main.php');
 		exit;
 	}else {
 		$parse = $_POST;
+	}
+
+
+	// referer 가 없는 경우 리턴 시켜야 함
+	if (!isset($_SERVER["HTTP_REFERER"]))  {
+		//messageBox_script("","main.php");
+		toplocation_script("main.php");
+		exit;
+	}else if ( $_SERVER["HTTP_REFERER"] != "") {
+		$referer = explode($_SERVER["HTTP_REFERER"],"http://")[0];
+		echo $referer;
+		
 	}
 
 	$array_posts = array("idx","passwd","wherefrom");
@@ -54,7 +66,6 @@
 	}
 	// wherefrom - 1: 목록 (read.php)
 	//           - 2: 읽기 (main.php)
-	// 수정에서는 삭제가 없음
 	if ( $error_message ) {
 		if ($wherefrom == "2") { // 읽기 에서 삭제시
 			echo '<script type="text/javascript">
@@ -63,10 +74,7 @@
 				</script>';
 			exit;
 		}else{ // $wherefrom 의 값이 2 이외에는 다 main으로 돌림  목록에서 삭제시
-			echo '<script type="text/javascript">
-				alert("'.$error_message.'");
-				top.location.href="../front/main.php";
-				</script>';
+			messageBox_script($error_message,"../front/main.php");
 			exit;
 		}
 	} else if ( $sucess_message ){ // 삭제하면 무조건 리스트로 돌아감
@@ -75,7 +83,7 @@
 		// 	top.location.href= "../front/main.php";
 		// 	</script>';
 		// exit;
-		messageBox_script($sucess_message,"main.php");
+		messageBox_script($sucess_message,"../front/main.php");
 		exit;
 	} else {
 		// echo '<script type="text/javascript">
@@ -84,7 +92,7 @@
 		// 	</script>';
 		// exit;
 		$alert_massage = "비정상적인 접근 입니다.";
-		messageBox_script($alert_massage,"main.php");
+		messageBox_script($alert_massage,"../front/main.php");
 		exit;
 	}
 ?>
