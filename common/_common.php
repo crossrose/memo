@@ -8,7 +8,7 @@
 	//$memo_status = array{"NEW","EDIT","READ"};
 
 	$domain 			= "redwolf.site";
-	$domain_url 		= "www".$domain;
+	$domain_url 		= "www.".$domain;
 	$domain_http_url 	= "http://".$domain_url;
 	$domain_https_url 	= "https://".$domain_url;
 
