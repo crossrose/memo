@@ -31,8 +31,10 @@
 
 	// 문제가 발생시 리스트로 돌아간다.
 	if ($error_message !="") {
-		echo "<script type='text/javascript'>alert('".$error_message."'); top.location.href='main.php';</script>";
-		exit;
+		// echo "<script type='text/javascript'>alert('".$error_message."'); top.location.href='main.php';</script>";
+		messageBox_script($error_message,"main.php");
+
+		// exit;
 	}
 ?>
 	<script type="text/javascript">
@@ -52,12 +54,17 @@
 	function cancel()
 	{
 		//top.location.href =
-		history.back();
+		//history.back();
+
 		return false;
-		// 기능 적으로는 스토리 보드 대로 (수정모드 -> 삭제 -> 취소 ->수정모드 , 목록-> 삭제-> 취소 -> 목록 ) 으로 되지만,
+		// 기능 적으로는 스토리 보드 대로 (읽기모드 -> 삭제 -> 취소 ->읽기모드 , 목록-> 삭제-> 취소 -> 목록 ) 으로 되지만,
 		// 올바른 방법인지에 대해서는 고민이 있음.
 	}
 	</script>
+	<?php
+	print_r($_SERVER);
+
+	?>
 	<label> 삭제하시려면 비밀번호를 입력해 주셔야 합니다. </label>
 	<form name="frmDeleteMemo" id="frmDeleteMemo" action="../modules/delete.php" method="post" onsubmit="return chk_value();">
 		<input type="hidden" name="idx" id="idx" value="<?=$idx?>"/>

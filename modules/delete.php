@@ -70,16 +70,21 @@
 			exit;
 		}
 	} else if ( $sucess_message ){ // 삭제하면 무조건 리스트로 돌아감
-		echo '<script type="text/javascript">
-			alert("'.$sucess_message.'");
-			top.location.href= "../front/main.php";
-			</script>';
+		// echo '<script type="text/javascript">
+		// 	alert("'.$sucess_message.'");
+		// 	top.location.href= "../front/main.php";
+		// 	</script>';
+		// exit;
+		messageBox_script($sucess_message,"main.php");
 		exit;
 	} else {
-		echo '<script type="text/javascript">
-			alert(" 비정상적인 접근 입니다.");
-			top.location.href= "../front/main.php";
-			</script>';
+		// echo '<script type="text/javascript">
+		// 	alert(" 비정상적인 접근 입니다.");
+		// 	top.location.href= "../front/main.php";
+		// 	</script>';
+		// exit;
+		$alert_massage = "비정상적인 접근 입니다.";
+		messageBox_script($alert_massage,"main.php");
 		exit;
 	}
 ?>

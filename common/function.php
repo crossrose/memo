@@ -88,4 +88,14 @@
 	//  function check_textbox_value($value) {
 	//
 	//  }
+
+	// Message alert
+	function messageBox_script($value,$top_page = "") {
+		$messageBox = "<script type='text/javascript'>alert('".$value."');";
+		if ($top_page != "") {
+			$messageBox .="top.location.href='".$top_page."';";
+		}
+		$messageBox .="</script>";
+		echo $messageBox;
+	}
 ?>
