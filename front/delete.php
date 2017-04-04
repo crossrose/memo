@@ -1,3 +1,7 @@
+<?php
+	include ("../common/_common.php");
+	include ("../common/function.php");
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
